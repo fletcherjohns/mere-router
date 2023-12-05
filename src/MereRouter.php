@@ -1,5 +1,6 @@
 <?php
 
+namespace MereRouter\src;
 
 const PRIVILEGE = 'privilege'; // This is already defined in UserManager
 const DEFAULT_PRIVILEGE_GET = 'default_privilege_get';
@@ -54,7 +55,7 @@ class MereRouter {
      * @return bool
      */
     static function satisfyPrivilege($privilege): bool {
-        return $privilege instanceof Closure ?
+        return $privilege instanceof \Closure ?
             $privilege() :
             $_SESSION[PRIVILEGE] >= $privilege;
     }
@@ -92,7 +93,7 @@ class MereRouter {
                 exit();
 
             }
-            if (isset($function) && ($function instanceof Closure || function_exists($function))) {
+            if (isset($function) && ($function instanceof \Closure || function_exists($function))) {
                 // If there are elements after this one in the path, send them as parameters to $function
                 $args = array_slice($path, $index + 1);
                 $function(...$args);
