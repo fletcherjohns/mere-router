@@ -1,0 +1,11 @@
+{
+  "name": "fletcherjohns/mere-router",
+  "description": "A basic router for PHP website",
+  "autoload": {
+    "psr-4": {
+      "fletcherjohns\\mere-router\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
