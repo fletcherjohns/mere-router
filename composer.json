@@ -3,7 +3,7 @@
   "description": "A basic router for PHP website",
   "autoload": {
     "psr-4": {
-      "mere-router\\": "src/"
+      "MereRouter\\": "src/"
     }
   },
   "minimum-stability": "dev",

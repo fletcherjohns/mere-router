@@ -1,6 +1,7 @@
 <?php
 
-// const PRIVILEGE = 'privilege'; // This is already defined in UserManager
+
+const PRIVILEGE = 'privilege'; // This is already defined in UserManager
 const DEFAULT_PRIVILEGE_GET = 'default_privilege_get';
 const DEFAULT_PRIVILEGE_POST = 'default_privilege_post';
 const DEFAULT_REDIRECT = 'default_redirect';
@@ -39,6 +40,11 @@ const ROUTES = 'routes';
  */
 class MereRouter {
 
+    private static array $routes = [];
+
+    static function defineRoutes(array $routes): void {
+        self::$routes = $routes;
+    }
 
     /**
      * $privilege may be a Closure or an integer representing privilege level.
@@ -55,14 +61,6 @@ class MereRouter {
 
     static function processRequest($routes = null, $index = 1) {
 
-        if ($routes == null) {
-            if (file_exists('routes.php')) {
-                require_once 'routes.php';
-                $routes = DEFINED_ROUTES;
-            } else {
-                $routes = [];
-            }
-        }
         $path = explode("/", explode("?", $_SERVER['REQUEST_URI'])[0]);
 
         if(($_SERVER['HTTP_HOST'] !== "127.0.0.1" && $_SERVER['HTTP_HOST'] !== 'meremammal.test')
@@ -72,9 +70,9 @@ class MereRouter {
             exit();
         }
         $redirect =  $routes[DEFAULT_REDIRECT] ?? '';
-        if (isset($routes[$path[$index]])) {
+        if (isset(self::$routes[$path[$index]])) {
 
-            $route = $routes[$path[$index]];
+            $route = self::$routes[$path[$index]];
             $request_method = $_SERVER['REQUEST_METHOD'];
 
             if (isset($route[$request_method])) {
