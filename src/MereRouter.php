@@ -1,6 +1,6 @@
 <?php
 
-namespace MereRouter\src;
+namespace MereRouter;
 
 const PRIVILEGE = 'privilege'; // This is already defined in UserManager
 const DEFAULT_PRIVILEGE_GET = 'default_privilege_get';
