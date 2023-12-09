@@ -1,9 +1,11 @@
 # MereRouter
 
+This is primarily for my own personal use. It works well for my projects where I have a PHP file for each page that needs to be included depending on the url. A htaccess rewrite rule must be defined for this to work.
+
 Include in your project using Composer:
 
     "require": {        
-        "fletcherjohns/mere-router": "v0.0.3-alpha"
+        "fletcherjohns/mere-router": "v1.0.0"
     }
 
 To register your endpoints, call static function `registerRoutes($routes)` passing an array in the following format.
