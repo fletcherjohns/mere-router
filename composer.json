@@ -1,5 +1,5 @@
 {
-  "name": "fletcherjohns/mere-router",
+  "name": "meremammal/mere-router",
   "description": "A basic router for PHP website",
   "autoload": {
     "psr-4": {
